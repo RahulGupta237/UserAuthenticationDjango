@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .success{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header style="color: blue;">
+        <a href="{% url 'LogOut' %}">LogOut</a>
+    </header>
+    {% if messages %}
+    {% for msg in messages %}
+    <small {% if msg.tags %} class="{{msg.tags}}" {% endif %}>{{msg}}</small>
+    {% endfor %}
+    {% endif %}
+    <h1 style="color: pink;">{{name}} Hi you can accesss this application</h1>
+
+
+
+</body>
+</html>

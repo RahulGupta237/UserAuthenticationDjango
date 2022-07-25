@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .success{
+            color:#00ff37e5;
+        }
+        .err{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: red;">SignUp</h1>
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+
+        {% if forms.non_field_errors %}
+
+        {% for error in forms.non_field_errors %}
+        <p class="err">{{error}}</p>
+        {% endfor %}
+        {% endif %}
+
+        {% for fm in forms %}
+            {{fm.label_tag}} {{fm}} <br> <br>{{fm.errors|striptags}}
+        {% endfor %}
+
+        <input type="submit" value="submit">
+    </form>
+    {% if messages %}
+    {% for msg in messages %}
+    <small {% if msg.tags %} class="{{msg.tags}}" {% endif %}>{{msg}}</small>
+    {% endfor %}
+    {% endif %}
+
+
+    <a href="{% url 'LogIn' %}">LogIn</a>
+</body>
+</html>
